@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct node 
 {
@@ -9,6 +10,20 @@ struct node
 };
 
 struct node* root = NULL ;
+
+bool search(struct node* root, int data){
+    if(root == NULL) return false ;
+    if(root->data == data){
+        return true ;
+    }
+    else if(root->data < data ){
+        return search(root->right , data);
+    }
+    else{
+        return search(root->left , data);
+    }
+    return false;
+}
 
 void inorder(struct node* rootptr){
     if(rootptr != NULL){
@@ -55,6 +70,10 @@ int main(){
     root = insertNode(root , 156);
 
     inorder(root);
+
+    bool res = search(root , 1 git 6);
+    if(res == true) printf("found");
+    else printf("not found");
     return 0;
 
 }
