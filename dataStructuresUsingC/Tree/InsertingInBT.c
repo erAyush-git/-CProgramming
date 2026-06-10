@@ -21,6 +21,15 @@ int searchMin(struct node* rooot){
     return current->data;
 }
 
+int searchmax(struct node* rootptr){
+    struct node* current = rootptr;
+    if(current == NULL) return -1;
+    while(current->right != NULL){
+        current = current->right;
+    }
+    return current->data;
+}
+
 bool search(struct node* root, int data){
     if(root == NULL) return false ;
     if(root->data == data){
@@ -85,8 +94,8 @@ int main(){
     //if(res == true) printf("found");
     //else printf("not found");
 
-    int x = searchMin(root);
-    printf("%d" , x);
+    int x = searchmax(root);
+    printf("\n%d" , x);
     return 0;
 
 }
