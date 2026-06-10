@@ -11,6 +11,16 @@ struct node
 
 struct node* root = NULL ;
 
+int searchMin(struct node* rooot){
+    struct node* current = rooot;
+    if(current == NULL) return -1;
+    while(current->left != NULL){
+        current = current->left;
+
+    }
+    return current->data;
+}
+
 bool search(struct node* root, int data){
     if(root == NULL) return false ;
     if(root->data == data){
@@ -71,9 +81,12 @@ int main(){
 
     inorder(root);
 
-    bool res = search(root , 1 git 6);
-    if(res == true) printf("found");
-    else printf("not found");
+    //bool res = search(root , 1 , 6);
+    //if(res == true) printf("found");
+    //else printf("not found");
+
+    int x = searchMin(root);
+    printf("%d" , x);
     return 0;
 
 }
